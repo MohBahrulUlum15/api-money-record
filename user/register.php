@@ -19,7 +19,13 @@ if ($result_check->num_rows > 0) {
         "success"=>false,
         "message"=>"email",
     ));
-}else{
+} elseif ($name == "" || $email == "" || $password == "") {
+    echo json_encode(array(
+        "success"=>false,
+        "message"=>"Gagal",
+    ));
+}
+else{
     $sql =  "INSERT INTO user
             SET
             name = '$name',
